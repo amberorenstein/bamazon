@@ -15,8 +15,33 @@ var connection = mysql.createConnection({
 // connect to the mysql server and sql database
 connection.connect(function(err) {
   if (err) throw err;
-  console.log("connected");
+  // console.log("connected");
 });
+
+function start() {
+  inquirer
+    .prompt({
+      name: "action",
+      type: "list",
+      message: "What would you like to do?",
+      choices: [
+        "Make a purchase",
+        "Exit"
+      ]
+    })
+    .then(function(answer) {
+      switch (answer.action) {
+        case "Make a purchase":
+          run();
+          break;
+
+        case "Exit":
+          connection.end();
+            break;
+      }
+    });
+}
+
 
 var run = function()
 {connection.query("SELECT * FROM products", function(err,results){
@@ -60,7 +85,7 @@ var run = function()
       }, {
         item_id: chosenId
       }], function(err, results) {
-        run();
+        // run();
       });
     } else {
       console.log("Sorry, insufficient Quanity at this time. All we have is " + inStock + " in our Inventory.");
@@ -72,4 +97,4 @@ var run = function()
 });
 }
 
-run();
+start();
