@@ -24,9 +24,12 @@ var makeTable = function() {
     inquirer.prompt([{
       type: 'input',
       name: 'choice',
-      message: 'What would you like to buy today?'
+      message: 'What would you like to buy today? [Enter X to exit]'
     }]).then(function(answer){
       var correct = false;
+      if(answer.choice.toUpperCase()=="X"){
+        process.exit();
+      }
       for (var i=0; i<res.length; i++){
         if(res[i].product_name == answer.choice){
           correct=true;
@@ -55,6 +58,10 @@ var makeTable = function() {
             }
           })
         }
+      }
+      if(i == res.length && correct == false){
+        console.log("Invalid selection");
+        promptCustomer(res);
       }
     })
   }
