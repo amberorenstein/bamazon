@@ -1,6 +1,8 @@
 DROP DATABASE IF EXISTS bamazon_db;
 CREATE DATABASE bamazon_db;
 
+USE bamazon_db;
+
 CREATE TABLE products(
   item_id INTEGER(11) AUTO_INCREMENT NOT NULL,
   product_name VARCHAR(20),
@@ -11,6 +13,7 @@ CREATE TABLE products(
 );
 
 
+SELECT * FROM products;
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("banana", "food", 0.25, 3000);
@@ -31,26 +34,21 @@ VALUES ("pillow", "home", 50.00, 8764);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("gum", "food", 0.25, 53050);
 
-USE bamazon_db;
-
-SELECT * FROM products;
-
-DELETE FROM products
-WHERE item_id = 11;
-DELETE FROM products
-WHERE item_id = 12;
-DELETE FROM products
-WHERE item_id = 13;
-DELETE FROM products
-WHERE item_id = 14;
-DELETE FROM products
-WHERE item_id = 15;
-DELETE FROM products
-WHERE item_id = 16;
-DELETE FROM products
-WHERE item_id = 17;
-DELETE FROM products
-WHERE item_id = 18;
 
 
-
+-- DELETE FROM products
+-- WHERE item_id = 11;
+-- DELETE FROM products
+-- WHERE item_id = 12;
+-- DELETE FROM products
+-- WHERE item_id = 13;
+-- DELETE FROM products
+-- WHERE item_id = 14;
+-- DELETE FROM products
+-- WHERE item_id = 15;
+-- DELETE FROM products
+-- WHERE item_id = 16;
+-- DELETE FROM products
+-- WHERE item_id = 17;
+-- DELETE FROM products
+-- WHERE item_id = 18;
